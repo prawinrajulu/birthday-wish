@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520">
+  <defs>
+    <linearGradient id="photoGrad15" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050F1D" />
+      <stop offset="100%" stop-color="#192841" />
+    </linearGradient>
+    <radialGradient id="vignette15" cx="50%" cy="50%" r="65%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.65" />
+    </radialGradient>
+  </defs>
+
+  <!-- Base Photographic Background -->
+  <rect width="800" height="520" fill="url(#photoGrad15)" />
+
+  <!-- Atmospheric Background Elements & Subtle Depth -->
+  <circle cx="400" cy="270" r="210" fill="#C9B6FF" opacity="0.18" filter="blur(50px)"/>
+               <circle cx="250" cy="200" r="3" fill="#FFF8FC" opacity="0.9"/>
+               <circle cx="550" cy="180" r="3" fill="#FFD98E" opacity="0.9"/>
+               <circle cx="400" cy="120" r="3.5" fill="#FFB6D5" opacity="0.9"/>
+               <circle cx="480" cy="340" r="2.5" fill="#FFF8FC" opacity="0.8"/>
+
+  <!-- Dark Photographic Vignette -->
+  <rect width="800" height="520" fill="url(#vignette15)" />
+
+  <!-- Elegant Clean Composition Text -->
+  <g transform="translate(400, 240)" text-anchor="middle">
+    <!-- Clean Subtle Aperture Ring -->
+    <circle cx="0" cy="-25" r="54" fill="none" stroke="#FFD98E" stroke-width="1.5" stroke-opacity="0.35" />
+    <circle cx="0" cy="-25" r="36" fill="none" stroke="#FFF8FC" stroke-width="1" stroke-opacity="0.25" />
+    <circle cx="0" cy="-25" r="3" fill="#FFD98E" opacity="0.8" />
+
+    <!-- Title -->
+    <text y="75" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="24" fill="#FFF8FC" letter-spacing="2">
+      MORE MEMORIES TO COME
+    </text>
+
+    <!-- Subtitle -->
+    <text y="105" font-family="'Plus Jakarta Sans', sans-serif" font-weight="400" font-size="14" fill="#FFB6D5" opacity="0.85" letter-spacing="0.5">
+      Here's to a lifetime of adventures ahead
+    </text>
+
+    <!-- Tasteful note for adding personal photograph -->
+    <text y="132" font-family="'Plus Jakarta Sans', sans-serif" font-weight="300" font-size="11" fill="#FFF8FC" opacity="0.5" letter-spacing="0.5">
+      Replace with real photo: /public/images/memories/memory-15.jpg
+    </text>
+  </g>
+</svg>

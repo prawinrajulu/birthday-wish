@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #071426;
+    color: #FFF8FC;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+/* Glassmorphism custom classes */
+.glass-panel {
+  background: rgba(7, 20, 38, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 182, 213, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(4, 11, 22, 0.37);
+}
+
+.glass-panel-light {
+  background: rgba(22, 59, 112, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 217, 142, 0.25);
+  box-shadow: 0 4px 24px -1px rgba(244, 91, 154, 0.2);
+}
+
+.glass-pill {
+  background: rgba(14, 34, 61, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 182, 255, 0.25);
+}
+
+/* Shimmer & Glow text */
+.text-shimmer {
+  background: linear-gradient(90deg, #FFF8FC 0%, #FFD98E 30%, #FFB6D5 60%, #FFF8FC 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.text-gold-glow {
+  color: #FFD98E;
+  text-shadow: 0 0 15px rgba(255, 217, 142, 0.6), 0 0 30px rgba(244, 91, 154, 0.4);
+}
+
+.text-pink-glow {
+  color: #FFB6D5;
+  text-shadow: 0 0 15px rgba(244, 91, 154, 0.6), 0 0 30px rgba(201, 182, 255, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #071426;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(244, 91, 154, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 91, 154, 0.8);
+}
