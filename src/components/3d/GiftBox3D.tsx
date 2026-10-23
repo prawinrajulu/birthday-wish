@@ -101,16 +101,16 @@ export const GiftBox3D: React.FC<GiftBox3DProps> = ({ isOpen, onOpen }) => {
         >
           <extrudeGeometry args={[heartShape, extrudeSettings]} />
           <meshPhysicalMaterial
-            color="#FFB6D5"
-            emissive="#F45B9A"
-            emissiveIntensity={0.4}
-            roughness={0.1}
-            metalness={0.15}
-            transmission={0.8}
+            color="#FFB9D5"
+            emissive="#F47FAF"
+            emissiveIntensity={0.35}
+            roughness={0.08}
+            metalness={0.1}
+            transmission={0.85}
             thickness={0.8}
-            ior={1.4}
+            ior={1.45}
             clearcoat={1}
-            clearcoatRoughness={0.05}
+            clearcoatRoughness={0.04}
           />
         </mesh>
       </group>
@@ -126,10 +126,10 @@ export const GiftBox3D: React.FC<GiftBox3DProps> = ({ isOpen, onOpen }) => {
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.06}
-          color="#FFD98E"
+          size={0.05}
+          color="#F4D49A"
           transparent
-          opacity={0.8}
+          opacity={0.85}
           blending={THREE.AdditiveBlending}
         />
       </points>
@@ -141,67 +141,67 @@ export const GiftBox3D: React.FC<GiftBox3DProps> = ({ isOpen, onOpen }) => {
         onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
         onPointerOut={() => { document.body.style.cursor = 'default'; }}
       >
-        {/* Box Base */}
+        {/* Box Base (Deep Midnight Navy with Rose Satin Sheen) */}
         <mesh position={[0, -0.2, 0]} castShadow receiveShadow>
           <boxGeometry args={[1.6, 1.2, 1.6]} />
           <meshStandardMaterial
-            color="#E24083"
-            roughness={0.3}
-            metalness={0.25}
+            color="#0D1E38"
+            roughness={0.25}
+            metalness={0.5}
           />
         </mesh>
 
-        {/* Vertical Ribbon (Body) */}
+        {/* Vertical Ribbon (Body - Champagne Gold) */}
         <mesh position={[0, -0.2, 0]}>
-          <boxGeometry args={[1.62, 1.22, 0.28]} />
+          <boxGeometry args={[1.62, 1.22, 0.26]} />
           <meshStandardMaterial
-            color="#FFD98E"
-            roughness={0.2}
-            metalness={0.8}
+            color="#F4D49A"
+            roughness={0.18}
+            metalness={0.85}
           />
         </mesh>
         <mesh position={[0, -0.2, 0]}>
-          <boxGeometry args={[0.28, 1.22, 1.62]} />
+          <boxGeometry args={[0.26, 1.22, 1.62]} />
           <meshStandardMaterial
-            color="#FFD98E"
-            roughness={0.2}
-            metalness={0.8}
+            color="#F4D49A"
+            roughness={0.18}
+            metalness={0.85}
           />
         </mesh>
 
-        {/* Box Lid (Animated) */}
+        {/* Box Lid (Animated - Rose Pink Velvet) */}
         <group ref={lidGroupRef} position={[0, 0.45, 0]}>
           <mesh castShadow>
             <boxGeometry args={[1.7, 0.28, 1.7]} />
             <meshStandardMaterial
-              color="#F45B9A"
-              roughness={0.25}
-              metalness={0.3}
+              color="#F47FAF"
+              roughness={0.3}
+              metalness={0.35}
             />
           </mesh>
           {/* Lid Ribbon Cross */}
           <mesh position={[0, 0.01, 0]}>
-            <boxGeometry args={[1.72, 0.29, 0.29]} />
-            <meshStandardMaterial color="#FFD98E" roughness={0.15} metalness={0.85} />
+            <boxGeometry args={[1.72, 0.29, 0.27]} />
+            <meshStandardMaterial color="#F4D49A" roughness={0.15} metalness={0.9} />
           </mesh>
           <mesh position={[0, 0.01, 0]}>
-            <boxGeometry args={[0.29, 0.29, 1.72]} />
-            <meshStandardMaterial color="#FFD98E" roughness={0.15} metalness={0.85} />
+            <boxGeometry args={[0.27, 0.29, 1.72]} />
+            <meshStandardMaterial color="#F4D49A" roughness={0.15} metalness={0.9} />
           </mesh>
 
           {/* Bow on Top */}
           <group position={[0, 0.25, 0]}>
             <mesh position={[-0.25, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
-              <torusGeometry args={[0.22, 0.08, 12, 24]} />
-              <meshStandardMaterial color="#FFD98E" roughness={0.2} metalness={0.85} />
+              <torusGeometry args={[0.22, 0.07, 14, 28]} />
+              <meshStandardMaterial color="#F4D49A" roughness={0.18} metalness={0.88} />
             </mesh>
             <mesh position={[0.25, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
-              <torusGeometry args={[0.22, 0.08, 12, 24]} />
-              <meshStandardMaterial color="#FFD98E" roughness={0.2} metalness={0.85} />
+              <torusGeometry args={[0.22, 0.07, 14, 28]} />
+              <meshStandardMaterial color="#F4D49A" roughness={0.18} metalness={0.88} />
             </mesh>
             <mesh position={[0, 0, 0]}>
-              <sphereGeometry args={[0.12, 16, 16]} />
-              <meshStandardMaterial color="#FFE8B5" roughness={0.15} metalness={0.9} />
+              <sphereGeometry args={[0.11, 16, 16]} />
+              <meshStandardMaterial color="#FFE8BE" roughness={0.15} metalness={0.92} />
             </mesh>
           </group>
         </group>

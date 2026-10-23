@@ -29,58 +29,59 @@ export const Page5SecretLetter: React.FC = () => {
   }, [isOpen, displayedParagraphs, letter.paragraphs.length]);
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col justify-between items-center px-4 py-8 overflow-x-hidden">
-      {/* Moonlit Garden Sky Backdrop & Pink Moon */}
-      <div className="absolute top-10 right-10 sm:right-20 pointer-events-none z-10 flex flex-col items-center">
-        <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-tr from-rosepink/40 via-blush/60 to-softgold/80 blur-xl opacity-70 animate-pulse" />
+    <div className="relative w-full min-h-screen flex flex-col justify-between items-center px-6 sm:px-12 py-8 overflow-x-hidden">
+      {/* Soft Moonlit Atmospheric Sky Backdrop */}
+      <div className="absolute top-8 right-8 sm:right-24 pointer-events-none z-10 flex flex-col items-center">
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-rosepink/30 via-blush/40 to-champagne/60 blur-2xl opacity-60 animate-pulse" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <Moon className="w-16 h-16 sm:w-20 sm:h-20 text-softgold/85 drop-shadow-[0_0_20px_rgba(255,217,142,0.8)]" />
+          <Moon className="w-14 h-14 sm:w-20 sm:h-20 text-champagne/75 drop-shadow-[0_0_25px_rgba(244,212,154,0.6)]" />
         </div>
       </div>
 
-      {/* Top Header Card */}
-      <motion.div
+      {/* Top Editorial Header */}
+      <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-20 text-center max-w-lg mt-4 mb-4"
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-20 text-center max-w-xl mt-2 mb-4"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs text-blush mb-2 border border-blush/30 shadow-glow-pink">
-          <Sparkles className="w-3.5 h-3.5 text-softgold animate-pulse" />
-          <span>CONFIDENTIAL & DEAR</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-champagne/25 text-[11px] text-champagne tracking-[0.2em] uppercase font-sans mb-3 backdrop-blur-md">
+          <Sparkles className="w-3.5 h-3.5 text-champagne animate-pulse" />
+          <span>WRITTEN FROM THE HEART • CHAPTER 05</span>
         </div>
-        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-dreamwhite">
-          There's something I've always wanted you to know...
+        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-dreamwhite tracking-tight leading-tight">
+          There's something I've always <span className="font-serif italic text-shimmer">wanted you to know...</span>
         </h1>
-      </motion.div>
+      </motion.header>
 
-      {/* Center 3D Interactive Sealed Envelope or Open Parchment Letter */}
-      <div className="relative z-20 w-full max-w-2xl my-4 flex justify-center items-center">
+      {/* Center Interactive Sealed Envelope or Open Editorial Note */}
+      <div className="relative z-20 w-full max-w-3xl my-4 flex justify-center items-center">
         <AnimatePresence mode="wait">
           {!isOpen ? (
-            /* Sealed Envelope */
+            /* Sealed Luxury Envelope */
             <motion.div
               key="sealed-envelope"
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              initial={{ opacity: 0, scale: 0.92, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.85, y: -30 }}
-              whileHover={{ scale: 1.03 }}
+              exit={{ opacity: 0, scale: 0.88, y: -25, filter: 'blur(8px)' }}
+              whileHover={{ scale: 1.02 }}
               onClick={handleOpenLetter}
-              className="cursor-pointer relative w-full max-w-md aspect-[16/10] glass-panel rounded-3xl p-8 border-2 border-blush/40 shadow-glow-pink flex flex-col items-center justify-center text-center group"
+              className="cursor-pointer relative w-full max-w-lg aspect-[16/10] glass-editorial rounded-3xl p-8 sm:p-10 border border-white/15 shadow-[0_25px_60px_-15px_rgba(4,11,22,0.8)] flex flex-col items-center justify-center text-center group backdrop-blur-2xl"
             >
               {/* Envelope flap aesthetic */}
-              <div className="absolute top-0 left-0 right-0 h-1/2 border-b-2 border-blush/30 bg-gradient-to-b from-royal/50 to-transparent pointer-events-none rounded-t-3xl" />
+              <div className="absolute top-0 left-0 right-0 h-1/2 border-b border-white/10 bg-gradient-to-b from-ocean-deep/60 to-transparent pointer-events-none rounded-t-3xl" />
 
               {/* Golden Wax Seal */}
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-softgold via-softgold-dark to-rosepink border-2 border-white/50 flex items-center justify-center shadow-glow-gold group-hover:scale-110 transition-transform duration-300 relative z-10 mb-4">
-                <Sparkles className="w-9 h-9 text-midnight" />
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-champagne via-champagne-dark to-rosepink border border-white/40 flex items-center justify-center shadow-[0_0_30px_rgba(244,212,154,0.45)] group-hover:scale-110 transition-transform duration-300 relative z-10 mb-4">
+                <Sparkles className="w-8 h-8 text-midnight" />
               </div>
 
               <div className="relative z-10">
-                <p className="font-serif text-xl sm:text-2xl font-bold text-dreamwhite mb-1">
+                <p className="font-serif text-2xl sm:text-3xl font-light text-dreamwhite mb-1 tracking-wide">
                   For My Best Friend
                 </p>
-                <p className="text-xs text-blush/80 font-sans tracking-widest uppercase">
-                  Sealed with memories & inside jokes 📸
+                <p className="text-[11px] text-blush/80 font-sans tracking-[0.2em] uppercase">
+                  SEALED WITH MEMORIES & INSIDE JOKES
                 </p>
               </div>
 
@@ -90,45 +91,48 @@ export const Page5SecretLetter: React.FC = () => {
                   handleOpenLetter();
                 }}
                 aria-label="Open your letter"
-                className="mt-6 px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-rosepink to-softgold text-midnight flex items-center gap-2 shadow-glow-pink group-hover:shadow-glow-gold transition-all"
+                className="mt-6 px-7 py-3 rounded-full text-xs font-sans font-semibold tracking-[0.16em] uppercase bg-gradient-to-r from-rosepink to-champagne text-midnight flex items-center gap-2 shadow-[0_0_25px_rgba(244,127,175,0.4)] group-hover:shadow-[0_0_35px_rgba(244,212,154,0.5)] transition-all"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4 text-midnight" />
                 <span>OPEN YOUR LETTER 💌</span>
               </button>
             </motion.div>
           ) : (
-            /* Unfolded Handwritten Letter */
+            /* Unfolded Editorial Letter (Warm Stationery Paper with Gold Border) */
             <motion.div
               key="unfolded-letter"
-              initial={{ opacity: 0, scale: 0.85, y: 30 }}
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full glass-panel rounded-3xl p-6 sm:p-10 border border-softgold/30 shadow-glow-gold relative overflow-hidden backdrop-blur-2xl"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full rounded-3xl p-7 sm:p-12 border border-champagne/25 shadow-[0_25px_70px_rgba(0,0,0,0.85)] relative overflow-hidden backdrop-blur-2xl bg-gradient-to-b from-[#0D1E38]/95 to-[#081426]/95"
               style={{
-                backgroundImage: 'radial-gradient(ellipse at 50% 0%, rgba(255, 217, 142, 0.08), transparent 70%)',
+                backgroundImage: 'radial-gradient(ellipse at 50% 0%, rgba(244, 212, 154, 0.08), transparent 70%)',
               }}
             >
-              {/* Top Salutation */}
-              <div className="border-b border-softgold/20 pb-4 mb-6 flex justify-between items-center">
+              {/* Stationery Letterhead */}
+              <div className="border-b border-champagne/20 pb-5 mb-7 flex justify-between items-center">
                 <div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-softgold">
+                  <span className="text-[10px] uppercase font-mono tracking-[0.25em] text-champagne/70 block mb-1">
+                    PERSONAL & CONFIDENTIAL
+                  </span>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-light text-champagne tracking-tight">
                     {letter.title}
                   </h2>
-                  <p className="text-xs text-blush/80 italic font-sans">
+                  <p className="text-xs text-blush/80 italic font-serif mt-1">
                     Written for the bestest friend ever ✨
                   </p>
                 </div>
-                <Sparkles className="w-6 h-6 text-softgold animate-pulse" />
+                <Sparkles className="w-5 h-5 text-champagne/80 animate-pulse hidden sm:block" />
               </div>
 
-              {/* Paragraphs with typewriter reveal */}
-              <div className="space-y-4 font-serif text-base sm:text-lg leading-relaxed text-dreamwhite/95">
+              {/* Letter Paragraphs with Progressive Gentle Reveal */}
+              <div className="space-y-4 font-serif text-base sm:text-lg leading-[1.75] text-dreamwhite/95">
                 {letter.paragraphs.map((para, idx) => (
                   <motion.p
                     key={idx}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{
-                      opacity: idx < displayedParagraphs ? 1 : 0.2,
+                      opacity: idx < displayedParagraphs ? 1 : 0.25,
                       y: idx < displayedParagraphs ? 0 : 8,
                     }}
                     transition={{ duration: 0.6 }}
@@ -146,12 +150,12 @@ export const Page5SecretLetter: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: displayedParagraphs >= letter.paragraphs.length ? 1 : 0 }}
                 transition={{ duration: 0.8 }}
-                className="mt-8 pt-6 border-t border-softgold/20 flex flex-col items-end text-right"
+                className="mt-9 pt-6 border-t border-champagne/20 flex flex-col items-end text-right"
               >
-                <p className="text-sm font-sans text-blush italic">
+                <p className="text-sm font-sans font-light text-blush/90 italic">
                   {letter.signOff}
                 </p>
-                <p className="font-serif text-xl sm:text-2xl font-bold text-softgold mt-1">
+                <p className="font-serif text-xl sm:text-2xl font-light text-champagne mt-1.5 tracking-wide">
                   {letter.signature}
                 </p>
               </motion.div>
@@ -173,10 +177,10 @@ export const Page5SecretLetter: React.FC = () => {
             navigate('/birthday-surprise');
           }}
           aria-label="Proceed to final birthday surprise"
-          className="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-semibold text-sm sm:text-base text-dreamwhite bg-gradient-to-r from-rosepink via-rosepink-hover to-softgold shadow-glow-pink hover:shadow-glow-gold hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+          className="group inline-flex items-center gap-3 px-9 py-4 rounded-full font-sans font-semibold text-xs sm:text-sm tracking-[0.16em] uppercase text-dreamwhite bg-gradient-to-r from-rosepink via-rosepink-hover to-champagne shadow-[0_0_25px_rgba(244,127,175,0.4)] hover:shadow-[0_0_35px_rgba(244,212,154,0.5)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
         >
           <span>THERE'S ONE LAST THING...</span>
-          <ArrowRight className="w-4 h-4 text-softgold group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-champagne group-hover:translate-x-1.5 transition-transform duration-300" />
         </button>
       </motion.div>
     </div>

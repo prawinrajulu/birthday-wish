@@ -35,14 +35,14 @@ export const SceneBackground: React.FC = () => {
     window.addEventListener('resize', handleResize);
 
     const colors = [
-      'rgba(255, 182, 213, ', // blush pink
-      'rgba(244, 91, 154, ',  // rose pink
-      'rgba(201, 182, 255, ', // lavender
-      'rgba(255, 217, 142, ', // soft gold
-      'rgba(255, 248, 252, '  // dream white
+      'rgba(255, 185, 213, ', // blush pink
+      'rgba(244, 127, 175, ', // rose pink
+      'rgba(201, 184, 255, ', // lavender
+      'rgba(244, 212, 154, ', // champagne gold
+      'rgba(255, 247, 248, '  // warm white
     ];
 
-    const particleCount = Math.min(85, Math.floor((width * height) / 14000));
+    const particleCount = Math.min(80, Math.floor((width * height) / 15000));
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -53,63 +53,64 @@ export const SceneBackground: React.FC = () => {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: type === 'bokeh' ? Math.random() * 28 + 12 : Math.random() * 3.5 + 1.2,
-        speedX: (Math.random() - 0.5) * 0.4 + (type === 'petal' ? 0.3 : 0),
-        speedY: type === 'petal' ? Math.random() * 0.7 + 0.4 : (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.6 + 0.2,
-        pulseSpeed: Math.random() * 0.02 + 0.005,
+        size: type === 'bokeh' ? Math.random() * 26 + 10 : Math.random() * 2.8 + 1.0,
+        speedX: (Math.random() - 0.5) * 0.35 + (type === 'petal' ? 0.25 : 0),
+        speedY: type === 'petal' ? Math.random() * 0.6 + 0.35 : (Math.random() - 0.5) * 0.25,
+        opacity: Math.random() * 0.5 + 0.2,
+        pulseSpeed: Math.random() * 0.015 + 0.005,
         color: colors[Math.floor(Math.random() * colors.length)],
         type,
         rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * 0.02,
+        rotationSpeed: (Math.random() - 0.5) * 0.015,
       });
     }
 
     let time = 0;
 
     const render = () => {
-      time += 0.015;
+      time += 0.012;
       ctx.clearRect(0, 0, width, height);
 
-      // Deep space atmospheric ambient glow
+      // Deep ocean blue to midnight navy radial gradient
       const grad = ctx.createRadialGradient(
         width * 0.5,
-        height * 0.4,
-        100,
+        height * 0.35,
+        80,
         width * 0.5,
-        height * 0.5,
-        Math.max(width, height) * 0.8
+        height * 0.55,
+        Math.max(width, height) * 0.85
       );
-      grad.addColorStop(0, 'rgba(22, 59, 112, 0.45)');
-      grad.addColorStop(0.5, 'rgba(7, 20, 38, 0.85)');
-      grad.addColorStop(1, '#071426');
+      grad.addColorStop(0, 'rgba(18, 40, 71, 0.55)');
+      grad.addColorStop(0.55, 'rgba(8, 20, 38, 0.9)');
+      grad.addColorStop(1, '#081426');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
-      // Render cosmic nebula cloud patches
+      // Soft blush-rose atmospheric glow
       const pinkNebula = ctx.createRadialGradient(
-        width * 0.2,
-        height * 0.3,
-        20,
         width * 0.25,
-        height * 0.35,
-        width * 0.4
+        height * 0.25,
+        20,
+        width * 0.28,
+        height * 0.3,
+        width * 0.45
       );
-      pinkNebula.addColorStop(0, 'rgba(244, 91, 154, 0.12)');
-      pinkNebula.addColorStop(1, 'rgba(7, 20, 38, 0)');
+      pinkNebula.addColorStop(0, 'rgba(244, 127, 175, 0.09)');
+      pinkNebula.addColorStop(1, 'rgba(8, 20, 38, 0)');
       ctx.fillStyle = pinkNebula;
       ctx.fillRect(0, 0, width, height);
 
+      // Soft champagne-gold atmospheric glow
       const goldNebula = ctx.createRadialGradient(
-        width * 0.8,
-        height * 0.7,
+        width * 0.78,
+        height * 0.65,
         20,
         width * 0.75,
-        height * 0.65,
-        width * 0.35
+        height * 0.62,
+        width * 0.4
       );
-      goldNebula.addColorStop(0, 'rgba(255, 217, 142, 0.08)');
-      goldNebula.addColorStop(1, 'rgba(7, 20, 38, 0)');
+      goldNebula.addColorStop(0, 'rgba(244, 212, 154, 0.07)');
+      goldNebula.addColorStop(1, 'rgba(8, 20, 38, 0)');
       ctx.fillStyle = goldNebula;
       ctx.fillRect(0, 0, width, height);
 

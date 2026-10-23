@@ -91,10 +91,10 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
       {/* Floating Balloons behind Cake */}
       <group ref={balloonsRef}>
         {[
-          { pos: [-1.8, 1.8, -1.2], color: '#FFB6D5', scale: 0.65 },
-          { pos: [1.9, 2.2, -1.0], color: '#C9B6FF', scale: 0.75 },
-          { pos: [1.2, 1.4, -1.5], color: '#FFD98E', scale: 0.6 },
-          { pos: [-1.4, 2.4, -0.9], color: '#F45B9A', scale: 0.7 },
+          { pos: [-1.8, 1.8, -1.2], color: '#FFB9D5', scale: 0.65 },
+          { pos: [1.9, 2.2, -1.0], color: '#C9B8FF', scale: 0.75 },
+          { pos: [1.2, 1.4, -1.5], color: '#F4D49A', scale: 0.6 },
+          { pos: [-1.4, 2.4, -0.9], color: '#F47FAF', scale: 0.7 },
         ].map((b, i) => (
           <group key={i} position={b.pos as [number, number, number]} scale={b.scale}>
             {/* Balloon Body */}
@@ -102,9 +102,9 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
               <sphereGeometry args={[0.7, 24, 24]} />
               <meshPhysicalMaterial
                 color={b.color}
-                roughness={0.2}
-                metalness={0.4}
-                clearcoat={0.8}
+                roughness={0.15}
+                metalness={0.35}
+                clearcoat={0.9}
               />
             </mesh>
             {/* Balloon Knot */}
@@ -115,7 +115,7 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
             {/* String */}
             <mesh position={[0, -1.5, 0]}>
               <cylinderGeometry args={[0.008, 0.008, 1.4, 6]} />
-              <meshBasicMaterial color="#FFB6D5" transparent opacity={0.6} />
+              <meshBasicMaterial color="#FFB9D5" transparent opacity={0.6} />
             </mesh>
           </group>
         ))}
@@ -123,50 +123,50 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
 
       {/* Main Cake Group */}
       <group ref={cakeGroupRef}>
-        {/* Cake Stand / Pedestal Plate */}
+        {/* Cake Stand / Pedestal Plate (Champagne Gold) */}
         <mesh position={[0, -0.6, 0]} receiveShadow>
           <cylinderGeometry args={[1.7, 1.7, 0.12, 40]} />
           <meshStandardMaterial
-            color="#FFD98E"
-            roughness={0.2}
-            metalness={0.9}
+            color="#F4D49A"
+            roughness={0.18}
+            metalness={0.92}
           />
         </mesh>
         <mesh position={[0, -0.75, 0]}>
           <cylinderGeometry args={[0.5, 0.9, 0.25, 24]} />
-          <meshStandardMaterial color="#FFE8B5" roughness={0.25} metalness={0.85} />
+          <meshStandardMaterial color="#FFE8BE" roughness={0.2} metalness={0.88} />
         </mesh>
 
-        {/* Bottom Tier (Midnight Pink Velvet) */}
+        {/* Bottom Tier (Blush Pink Velvet) */}
         <mesh position={[0, -0.2, 0]} castShadow receiveShadow>
           <cylinderGeometry args={[1.4, 1.4, 0.7, 36]} />
           <meshStandardMaterial
-            color="#FFB6D5"
-            roughness={0.35}
-            metalness={0.15}
+            color="#FFB9D5"
+            roughness={0.32}
+            metalness={0.2}
           />
         </mesh>
 
         {/* Bottom Tier Cream Frosting Drips / Border */}
         <mesh position={[0, 0.16, 0]}>
           <torusGeometry args={[1.41, 0.08, 16, 36]} />
-          <meshStandardMaterial color="#FFF8FC" roughness={0.2} />
+          <meshStandardMaterial color="#FFF7F8" roughness={0.15} />
         </mesh>
 
-        {/* Top Tier (Blush & Soft Lavender) */}
+        {/* Top Tier (Rose Pink Velvet) */}
         <mesh position={[0, 0.5, 0]} castShadow receiveShadow>
           <cylinderGeometry args={[0.95, 0.95, 0.65, 36]} />
           <meshStandardMaterial
-            color="#F45B9A"
-            roughness={0.3}
-            metalness={0.2}
+            color="#F47FAF"
+            roughness={0.28}
+            metalness={0.25}
           />
         </mesh>
 
         {/* Top Tier Cream Edge */}
         <mesh position={[0, 0.83, 0]}>
           <torusGeometry args={[0.96, 0.07, 16, 36]} />
-          <meshStandardMaterial color="#FFF8FC" roughness={0.2} />
+          <meshStandardMaterial color="#FFF7F8" roughness={0.15} />
         </mesh>
 
         {/* Decorative Golden Pearl Beads around tiers */}
@@ -177,7 +177,7 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
               key={i}
               position={[Math.cos(angle) * 1.42, -0.1, Math.sin(angle) * 1.42]}>
               <sphereGeometry args={[0.05, 12, 12]} />
-              <meshStandardMaterial color="#FFD98E" metalness={0.95} roughness={0.1} />
+              <meshStandardMaterial color="#F4D49A" metalness={0.95} roughness={0.1} />
             </mesh>
           );
         })}
@@ -189,9 +189,9 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
             <mesh position={[0, -0.15, 0]}>
               <cylinderGeometry args={[0.045, 0.045, 0.45, 16]} />
               <meshStandardMaterial
-                color="#FFD98E"
+                color="#F4D49A"
                 roughness={0.2}
-                metalness={0.7}
+                metalness={0.75}
               />
             </mesh>
             {/* Candle Wick */}
@@ -205,15 +205,15 @@ export const BirthdayCake3D: React.FC<BirthdayCake3DProps> = ({
               position={[0, 0.22, 0]}
             >
               <sphereGeometry args={[1, 16, 16]} />
-              <meshBasicMaterial color="#FFD98E" />
+              <meshBasicMaterial color="#FFE8BE" />
             </mesh>
             {/* Candle Point Light */}
             {candlesLit && (
               <pointLight
                 position={[0, 0.25, 0]}
-                color="#FFD98E"
-                distance={2.5}
-                intensity={1.8}
+                color="#F4D49A"
+                distance={2.8}
+                intensity={2.0}
               />
             )}
           </group>

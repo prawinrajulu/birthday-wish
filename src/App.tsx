@@ -4,6 +4,7 @@ import { SceneBackground } from './components/common/SceneBackground';
 import { SoundController } from './components/common/SoundController';
 import { PageTransition } from './components/common/PageTransition';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
+import { NavigationControls } from './components/common/NavigationControls';
 
 import { Page1Invitation } from './pages/Page1Invitation';
 import { Page2SecretLock } from './pages/Page2SecretLock';
@@ -93,6 +94,9 @@ export const App: React.FC = () => {
 
         {/* Multi-Page Routes with Error Boundaries and Transitions */}
         <AnimatedRoutes />
+
+        {/* Global Minimal Navigation Pill (Bottom Floating) */}
+        <NavigationControls />
       </div>
     </Router>
   );

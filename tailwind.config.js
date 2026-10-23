@@ -8,36 +8,43 @@ export default {
     extend: {
       colors: {
         midnight: {
-          DEFAULT: '#071426',
+          DEFAULT: '#081426',
           deep: '#040B16',
-          light: '#0E223D',
+          light: '#0D1E38',
+          ocean: '#122847',
         },
-        royal: {
-          DEFAULT: '#163B70',
-          dark: '#0F2950',
-          light: '#235399',
+        ocean: {
+          DEFAULT: '#122847',
+          deep: '#0B1C33',
+          light: '#1B3B66',
         },
         blush: {
-          DEFAULT: '#FFB6D5',
-          light: '#FFD1E5',
-          dark: '#E092B4',
+          DEFAULT: '#FFB9D5',
+          light: '#FFD4E5',
+          dark: '#E59AB8',
         },
         rosepink: {
-          DEFAULT: '#F45B9A',
-          hover: '#E24083',
-          glow: '#FF7FB4',
+          DEFAULT: '#F47FAF',
+          hover: '#E25B93',
+          glow: '#FF94C2',
+          deep: '#C93F76',
         },
         lavender: {
-          DEFAULT: '#C9B6FF',
-          light: '#E2D8FF',
-          dark: '#A68DFF',
+          DEFAULT: '#C9B8FF',
+          light: '#E4DCFF',
+          dark: '#A78FFF',
+        },
+        champagne: {
+          DEFAULT: '#F4D49A',
+          glow: '#FFE8BE',
+          dark: '#D9B575',
         },
         softgold: {
-          DEFAULT: '#FFD98E',
-          glow: '#FFE8B5',
-          dark: '#E0B865',
+          DEFAULT: '#F4D49A',
+          glow: '#FFE8BE',
+          dark: '#D9B575',
         },
-        dreamwhite: '#FFF8FC',
+        dreamwhite: '#FFF7F8',
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],

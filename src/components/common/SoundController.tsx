@@ -63,20 +63,20 @@ export const SoundController: React.FC = () => {
       <button
         onClick={handleToggleMusic}
         title={isMusicPlaying ? "Pause Dreamy Ambient Music" : "Play Dreamy Ambient Music"}
-        className={`relative flex items-center gap-2 px-3.5 py-2 rounded-full glass-panel transition-all duration-300 text-xs font-medium border ${
+        className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-editorial transition-all duration-300 text-xs font-sans font-medium tracking-wider border ${
           isMusicPlaying
-            ? 'border-rosepink text-softgold shadow-glow-pink'
-            : 'border-white/15 text-dreamwhite/70 hover:text-dreamwhite hover:border-blush/40'
+            ? 'border-champagne text-champagne shadow-[0_0_15px_rgba(244,212,154,0.35)]'
+            : 'border-white/10 text-dreamwhite/60 hover:text-champagne hover:border-champagne/40'
         }`}
       >
-        <Disc className={`w-4 h-4 ${isMusicPlaying ? 'animate-spin text-rosepink' : ''}`} />
-        <span className="hidden sm:inline">
-          {isMusicPlaying ? 'Dream Melody' : 'Ambient Music'}
+        <Disc className={`w-3.5 h-3.5 ${isMusicPlaying ? 'animate-spin text-rosepink' : ''}`} />
+        <span className="hidden sm:inline text-[11px] uppercase tracking-wider">
+          {isMusicPlaying ? 'Melody Playing' : 'Ambient Music'}
         </span>
         {isMusicPlaying && (
-          <span className="flex gap-0.5 items-end h-3 ml-1">
+          <span className="flex gap-0.5 items-end h-2.5 ml-1">
             <span className="w-0.5 h-full bg-rosepink animate-bounce" style={{ animationDelay: '0ms' }} />
-            <span className="w-0.5 h-2/3 bg-softgold animate-bounce" style={{ animationDelay: '150ms' }} />
+            <span className="w-0.5 h-2/3 bg-champagne animate-bounce" style={{ animationDelay: '150ms' }} />
             <span className="w-0.5 h-full bg-lavender animate-bounce" style={{ animationDelay: '300ms' }} />
           </span>
         )}
@@ -87,7 +87,7 @@ export const SoundController: React.FC = () => {
         onClick={handleToggleMute}
         title={isMuted ? "Unmute All Sounds" : "Mute Sounds"}
         aria-label={isMuted ? "Unmute All Sounds" : "Mute Sounds"}
-        className="p-2.5 rounded-full glass-panel border border-white/15 text-dreamwhite/80 hover:text-softgold hover:border-softgold/40 transition-all duration-300 shadow-sm"
+        className="p-2 rounded-full glass-editorial border border-white/10 text-dreamwhite/70 hover:text-champagne hover:border-champagne/40 transition-all duration-300 shadow-sm"
       >
         {isMuted ? (
           <VolumeX className="w-4 h-4 text-rosepink" />

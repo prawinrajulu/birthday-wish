@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Play, Pause, Calendar, MapPin, Maximize2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { MemoryPhoto } from '../../types';
 import { FallbackImage } from '../common/FallbackImage';
 import { soundEngine } from '../../utils/soundEffects';
@@ -101,20 +101,14 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
     <AnimatePresence>
       <div 
         role="dialog"
-        aria-modal="true"
-        aria-labelledby="cinematic-photo-title"
-        className="fixed inset-0 z-[100] flex flex-col justify-between items-center bg-black/90 backdrop-blur-2xl p-4 sm:p-8 select-none"
+        className="fixed inset-0 z-[100] flex flex-col justify-between items-center bg-black/92 backdrop-blur-2xl p-4 sm:p-6 select-none"
       >
         {/* Top Floating Control Bar */}
-        <div className="w-full max-w-6xl flex items-center justify-between z-20 pt-2 pb-4">
+        <div className="w-full max-w-6xl flex items-center justify-between z-20 pt-1 pb-2">
           {/* Photo Counter */}
           <div className="flex items-center gap-3">
-            <span className="px-3.5 py-1.5 rounded-full glass-pill border border-white/15 text-xs font-mono font-semibold text-softgold tracking-widest shadow-sm">
+            <span className="px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono font-medium text-champagne tracking-widest shadow-sm">
               {String(currentIndex + 1).padStart(2, '0')} / {String(totalPhotos).padStart(2, '0')}
-            </span>
-
-            <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-semibold text-blush/80 bg-white/5 border border-white/10 tracking-wider uppercase">
-              {photo.category}
             </span>
           </div>
 
@@ -126,10 +120,10 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
                 setIsPlayingSlideshow(!isPlayingSlideshow);
               }}
               title="Toggle automatic slideshow (Spacebar)"
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 border ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-sans font-medium tracking-wider transition-all duration-300 border ${
                 isPlayingSlideshow
-                  ? 'bg-rosepink text-white border-rosepink shadow-glow-pink'
-                  : 'glass-pill border-white/20 text-dreamwhite/90 hover:text-softgold hover:border-softgold/50'
+                  ? 'bg-rosepink text-white border-rosepink shadow-[0_0_20px_rgba(244,127,175,0.5)]'
+                  : 'bg-white/[0.04] border-white/15 text-dreamwhite/90 hover:text-champagne hover:border-champagne/40'
               }`}
             >
               {isPlayingSlideshow ? (
@@ -151,7 +145,7 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
                 onClose();
               }}
               aria-label="Close photo viewer"
-              className="p-2.5 rounded-full glass-pill border border-white/20 text-dreamwhite/80 hover:text-white hover:border-softgold hover:scale-105 active:scale-95 transition-all shadow-md"
+              className="p-2.5 rounded-full bg-white/[0.04] border border-white/15 text-dreamwhite/80 hover:text-white hover:border-champagne hover:scale-105 active:scale-95 transition-all shadow-md"
             >
               <X className="w-5 h-5" />
             </button>
@@ -162,7 +156,7 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
         {isPlayingSlideshow && (
           <div className="fixed top-0 left-0 right-0 h-1 bg-white/10 z-30">
             <div
-              className="h-full bg-gradient-to-r from-rosepink to-softgold transition-all duration-75"
+              className="h-full bg-gradient-to-r from-rosepink to-champagne transition-all duration-75"
               style={{ width: `${slideshowProgress}%` }}
             />
           </div>
@@ -179,7 +173,7 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
                 onPrev();
               }}
               aria-label="Previous photograph"
-              className="absolute left-2 sm:left-4 z-20 p-3 sm:p-4 rounded-full glass-panel border border-white/20 text-dreamwhite hover:text-softgold hover:border-softgold/80 hover:scale-110 active:scale-95 transition-all shadow-2xl"
+              className="absolute left-2 sm:left-4 z-20 p-3.5 sm:p-4 rounded-full bg-black/50 border border-white/15 text-dreamwhite hover:text-champagne hover:border-champagne/70 hover:scale-110 active:scale-95 transition-all shadow-2xl backdrop-blur-md"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
@@ -192,13 +186,13 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.94 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="relative max-h-[68vh] w-auto max-w-full flex items-center justify-center rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.85)] border border-white/15 bg-black/60"
+            className="relative max-h-[85vh] sm:max-h-[88vh] w-auto max-w-full flex items-center justify-center rounded-2xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.9)] border border-white/10 bg-black/70"
           >
             <FallbackImage
               src={photo.url}
               fallbackTitle={photo.title}
               alt={photo.title}
-              className="max-h-[68vh] w-auto max-w-full object-contain"
+              className="max-h-[85vh] sm:max-h-[88vh] w-auto max-w-full object-contain"
             />
           </motion.div>
 
@@ -211,52 +205,12 @@ export const MemoryModal: React.FC<MemoryModalProps> = ({
                 onNext();
               }}
               aria-label="Next photograph"
-              className="absolute right-2 sm:right-4 z-20 p-3 sm:p-4 rounded-full glass-panel border border-white/20 text-dreamwhite hover:text-softgold hover:border-softgold/80 hover:scale-110 active:scale-95 transition-all shadow-2xl"
+              className="absolute right-2 sm:right-4 z-20 p-3.5 sm:p-4 rounded-full bg-black/50 border border-white/15 text-dreamwhite hover:text-champagne hover:border-champagne/70 hover:scale-110 active:scale-95 transition-all shadow-2xl backdrop-blur-md"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
           )}
         </div>
-
-        {/* Bottom Clean Caption & Metadata Panel */}
-        <motion.div
-          key={`caption-${photo.id}`}
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="w-full max-w-4xl text-center z-20 pt-3 pb-2"
-        >
-          <div className="glass-panel px-6 py-4 sm:px-8 sm:py-5 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-xl">
-            <h2 id="cinematic-photo-title" className="font-serif text-2xl sm:text-3xl font-bold text-dreamwhite tracking-wide mb-1.5">
-              {photo.title}
-            </h2>
-
-            <p className="text-sm sm:text-base font-sans italic text-softgold font-light leading-relaxed max-w-2xl mx-auto mb-2.5">
-              "{photo.caption}"
-            </p>
-
-            {photo.longDescription && (
-              <p className="text-xs sm:text-sm text-dreamwhite/75 font-sans font-light max-w-2xl mx-auto leading-relaxed mb-3">
-                {photo.longDescription}
-              </p>
-            )}
-
-            <div className="flex items-center justify-center gap-4 text-xs text-dreamwhite/50 pt-2 border-t border-white/10">
-              {photo.date && (
-                <span className="flex items-center gap-1.5 text-softgold/80">
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>{photo.date}</span>
-                </span>
-              )}
-              {photo.location && (
-                <span className="flex items-center gap-1.5 text-lavender/80">
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>{photo.location}</span>
-                </span>
-              )}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </AnimatePresence>,
     document.body

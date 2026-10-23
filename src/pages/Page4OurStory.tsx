@@ -37,37 +37,38 @@ export const Page4OurStory: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col justify-between items-center px-4 py-8 overflow-x-hidden">
-      {/* Top Header */}
-      <motion.div
+    <div className="relative w-full min-h-screen flex flex-col justify-between items-center px-6 sm:px-12 py-8 overflow-x-hidden">
+      {/* Top Editorial Header */}
+      <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-20 text-center max-w-xl mt-4 mb-4"
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-20 text-center max-w-2xl mt-2 mb-2"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs text-softgold mb-2 border border-softgold/30 shadow-glow-gold">
-          <Compass className="w-3.5 h-3.5 text-softgold animate-spin" style={{ animationDuration: '10s' }} />
-          <span>FRIENDSHIP CONSTELLATION PATH</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-champagne/25 text-[11px] text-champagne tracking-[0.2em] uppercase font-sans mb-3 backdrop-blur-md">
+          <Compass className="w-3.5 h-3.5 text-champagne animate-spin" style={{ animationDuration: '14s' }} />
+          <span>FRIENDSHIP CONSTELLATION • CHAPTER 04</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-dreamwhite leading-tight">
-          Our <span className="text-shimmer">Friendship Timeline</span>
+        <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-dreamwhite tracking-tight leading-tight">
+          Our <span className="font-serif italic text-shimmer">Friendship Journey</span>
         </h1>
-        <p className="text-xs sm:text-sm text-blush/80 mt-1 font-light">
-          From the first shared laugh to endless memories. Follow our journey.
+        <p className="text-xs sm:text-sm text-blush/80 mt-2 font-sans font-light">
+          From the first shared laugh to endless adventures. Follow the glowing pathway through our memories.
         </p>
-      </motion.div>
+      </motion.header>
 
-      {/* Interactive Glowing Timeline Pathway Navigation */}
-      <div className="relative z-20 w-full max-w-3xl my-3 px-4">
-        {/* Glowing Background Connecting Wire */}
+      {/* Interactive Glowing Pathway Navigation */}
+      <div className="relative z-20 w-full max-w-4xl my-4 px-4 sm:px-8">
+        {/* Background Connecting Celestial Wire */}
         <div className="relative flex items-center justify-between">
-          <div className="absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 bg-gradient-to-r from-rosepink/30 via-softgold/40 to-lavender/30 rounded-full" />
+          <div className="absolute top-1/2 left-0 right-0 h-[2px] -translate-y-1/2 bg-white/10 rounded-full" />
           <motion.div
-            className="absolute top-1/2 left-0 h-1 -translate-y-1/2 bg-gradient-to-r from-rosepink to-softgold rounded-full shadow-glow-pink"
+            className="absolute top-1/2 left-0 h-[2px] -translate-y-1/2 bg-gradient-to-r from-rosepink via-champagne to-lavender rounded-full shadow-[0_0_15px_rgba(244,212,154,0.5)]"
             initial={false}
             animate={{
               width: `${(safeActiveStep / Math.max(1, milestones.length - 1)) * 100}%`,
             }}
-            transition={{ duration: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           />
 
           {milestones.map((m, idx) => {
@@ -83,20 +84,20 @@ export const Page4OurStory: React.FC = () => {
                 className="relative z-10 flex flex-col items-center group focus:outline-none"
               >
                 <div
-                  className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm transition-all duration-300 border-2 ${
+                  className={`w-9 h-9 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-mono font-medium text-xs sm:text-sm transition-all duration-300 border ${
                     isActive
-                      ? 'bg-gradient-to-r from-rosepink to-softgold text-midnight border-white scale-110 shadow-glow-pink'
+                      ? 'bg-gradient-to-r from-champagne to-blush text-midnight border-white scale-110 shadow-[0_0_25px_rgba(244,212,154,0.6)] font-bold'
                       : isCompleted
-                      ? 'bg-midnight-light border-rosepink text-blush shadow-sm'
-                      : 'bg-midnight-deep border-white/20 text-dreamwhite/50 hover:border-blush/60 hover:text-dreamwhite'
+                      ? 'bg-ocean-deep border-rosepink/60 text-blush shadow-sm'
+                      : 'bg-midnight-deep/90 border-white/15 text-dreamwhite/40 hover:border-champagne/50 hover:text-dreamwhite'
                   }`}
                 >
-                  {idx + 1}
+                  {String(idx + 1).padStart(2, '0')}
                 </div>
 
                 <span
-                  className={`text-[10px] sm:text-xs mt-2 font-medium tracking-wider hidden sm:block max-w-[80px] text-center line-clamp-1 transition-colors ${
-                    isActive ? 'text-softgold font-semibold' : 'text-dreamwhite/50 group-hover:text-blush'
+                  className={`text-[10px] sm:text-[11px] mt-2.5 font-sans uppercase tracking-[0.15em] hidden sm:block max-w-[100px] text-center line-clamp-1 transition-colors ${
+                    isActive ? 'text-champagne font-semibold' : 'text-dreamwhite/40 group-hover:text-blush'
                   }`}
                 >
                   {m.yearOrPhase}
@@ -107,85 +108,85 @@ export const Page4OurStory: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Selected Milestone 3D Island Card */}
+      {/* Main Selected Milestone Editorial Presentation Card */}
       {current && (
-        <div className="relative z-20 w-full max-w-4xl my-4">
+        <div className="relative z-20 w-full max-w-5xl my-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={current.id}
-            initial={{ opacity: 0, scale: 0.96, x: 20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            exit={{ opacity: 0, scale: 0.96, x: -20 }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
-            className="glass-panel rounded-3xl p-6 sm:p-8 border border-blush/30 shadow-glow-blue flex flex-col md:flex-row gap-6 sm:gap-8 items-center backdrop-blur-xl"
-          >
-            {/* Visual Photo Card */}
-            <div className="w-full md:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden bg-midnight-deep shadow-2xl relative group">
-              <FallbackImage
-                src={current.image}
-                fallbackTitle={current.title}
-                alt={current.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-midnight-deep/70 via-transparent to-transparent pointer-events-none" />
+              initial={{ opacity: 0, scale: 0.97, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.97, x: -20 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-editorial rounded-3xl p-6 sm:p-10 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] flex flex-col md:flex-row gap-8 items-center backdrop-blur-2xl"
+            >
+              {/* Visual Photo Presentation */}
+              <div className="w-full md:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden bg-black/50 shadow-2xl relative group border border-white/10">
+                <FallbackImage
+                  src={current.image}
+                  fallbackTitle={current.title}
+                  alt={current.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-midnight-deep/70 via-transparent to-transparent pointer-events-none" />
 
-              <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-rosepink/80 backdrop-blur-md text-white shadow-glow-pink">
-                {current.highlight}
+                <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1 rounded-full text-[11px] font-sans font-medium tracking-wider uppercase bg-ocean-deep/90 backdrop-blur-md text-champagne border border-champagne/30 shadow-md">
+                  {current.highlight}
+                </div>
               </div>
-            </div>
 
-            {/* Narrative Content */}
-            <div className="w-full md:w-1/2 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs uppercase tracking-widest text-softgold font-bold">
-                    {current.yearOrPhase}
-                  </span>
-                  <span className="text-white/30">•</span>
-                  <div className="flex items-center gap-1 text-xs text-blush/80">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>{current.date}</span>
+              {/* Narrative Editorial Content */}
+              <div className="w-full md:w-1/2 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2.5 mb-2.5">
+                    <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-champagne font-medium">
+                      {current.yearOrPhase}
+                    </span>
+                    <span className="text-white/20">•</span>
+                    <div className="flex items-center gap-1.5 text-xs text-blush/80 font-sans">
+                      <Calendar className="w-3.5 h-3.5 text-champagne" />
+                      <span>{current.date}</span>
+                    </div>
                   </div>
+
+                  <h2 className="font-serif text-2xl sm:text-4xl font-light text-dreamwhite leading-snug tracking-tight mb-3">
+                    {current.title}
+                  </h2>
+
+                  <p className="font-serif italic text-sm sm:text-base text-blush/90 leading-relaxed font-light mb-8 border-l-2 border-rosepink/50 pl-4">
+                    "{current.caption}"
+                  </p>
                 </div>
 
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-dreamwhite leading-snug mb-3">
-                  {current.title}
-                </h2>
+                {/* Milestone Step Actions */}
+                <div className="flex items-center justify-between pt-5 border-t border-white/10">
+                  <button
+                    onClick={handlePrevStep}
+                    disabled={activeStep === 0}
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-sans tracking-wider uppercase transition-all ${
+                      activeStep > 0
+                        ? 'bg-white/[0.04] border border-white/15 text-dreamwhite hover:text-champagne hover:border-champagne/40'
+                        : 'text-white/20 cursor-not-allowed'
+                    }`}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>Previous</span>
+                  </button>
 
-                <p className="text-sm sm:text-base text-blush/90 leading-relaxed font-light mb-6 border-l-2 border-rosepink/50 pl-3.5">
-                  "{current.caption}"
-                </p>
+                  <button
+                    onClick={handleNextStep}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-sans font-semibold tracking-[0.14em] uppercase bg-gradient-to-r from-rosepink to-champagne text-midnight shadow-[0_0_20px_rgba(244,127,175,0.4)] hover:shadow-[0_0_30px_rgba(244,212,154,0.5)] transition-all active:scale-95"
+                  >
+                    <span>
+                      {activeStep === milestones.length - 1 ? 'Go to Secret Letter' : 'Next Milestone'}
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-midnight" />
+                  </button>
+                </div>
               </div>
-
-              {/* Milestone Step Actions */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                <button
-                  onClick={handlePrevStep}
-                  disabled={activeStep === 0}
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
-                    activeStep > 0
-                      ? 'glass-pill border border-white/20 text-dreamwhite hover:text-softgold'
-                      : 'text-white/20 cursor-not-allowed'
-                  }`}
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                  <span>Previous Moment</span>
-                </button>
-
-                <button
-                  onClick={handleNextStep}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-gradient-to-r from-rosepink to-softgold text-midnight hover:shadow-glow-pink transition-all active:scale-95"
-                >
-                  <span>
-                    {activeStep === milestones.length - 1 ? 'Go to Secret Letter' : 'Next Moment'}
-                  </span>
-                  <ChevronRight className="w-4 h-4 text-midnight" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       )}
 
       {/* Floating Bottom Navigation to Secret Letter */}
@@ -201,10 +202,10 @@ export const Page4OurStory: React.FC = () => {
             navigate('/secret-letter');
           }}
           aria-label="Continue to secret letter"
-          className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-xs sm:text-sm font-semibold text-softgold glass-pill border border-softgold/40 hover:border-softgold shadow-glow-gold hover:scale-105 active:scale-95 transition-all"
+          className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-sans font-semibold tracking-[0.16em] uppercase text-champagne bg-white/[0.04] border border-champagne/35 hover:border-champagne shadow-[0_0_20px_rgba(244,212,154,0.25)] hover:scale-105 active:scale-95 transition-all"
         >
           <span>CONTINUE TO SECRET LETTER</span>
-          <ArrowRight className="w-4 h-4 text-softgold group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 text-champagne group-hover:translate-x-1.5 transition-transform" />
         </button>
       </motion.div>
     </div>

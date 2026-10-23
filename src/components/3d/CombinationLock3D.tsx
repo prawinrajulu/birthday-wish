@@ -67,22 +67,22 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
 
   return (
     <group ref={safeGroupRef} position={[0, 0, 0]}>
-      {/* Safe Outer Frame / Housing */}
+      {/* Safe Outer Frame / Housing (Deep Midnight Metallic) */}
       <mesh position={[0, 0, -0.6]} castShadow receiveShadow>
         <boxGeometry args={[3.2, 2.8, 1.4]} />
         <meshStandardMaterial
-          color="#071426"
-          roughness={0.25}
-          metalness={0.85}
+          color="#081426"
+          roughness={0.22}
+          metalness={0.92}
         />
       </mesh>
 
-      {/* Metallic Gold Corner Brackets */}
+      {/* Champagne Gold Corner Brackets */}
       {[-1.5, 1.5].map((x) =>
         [-1.3, 1.3].map((y) => (
           <mesh key={`${x}-${y}`} position={[x, y, 0.05]}>
             <boxGeometry args={[0.3, 0.3, 0.12]} />
-            <meshStandardMaterial color="#FFD98E" roughness={0.2} metalness={0.9} />
+            <meshStandardMaterial color="#F4D49A" roughness={0.18} metalness={0.92} />
           </mesh>
         ))
       )}
@@ -91,21 +91,21 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
       <mesh position={[0, 0, -0.3]}>
         <boxGeometry args={[2.8, 2.4, 0.9]} />
         <meshStandardMaterial
-          color="#163B70"
-          roughness={0.4}
-          metalness={0.6}
+          color="#122847"
+          roughness={0.35}
+          metalness={0.7}
         />
       </mesh>
 
       {/* Glowing Treasure / Heart inside */}
-      <mesh position={[0, 0, -0.2]} scale={isUnlocked ? 1.2 : 0.8}>
+      <mesh position={[0, 0, -0.2]} scale={isUnlocked ? 1.25 : 0.8}>
         <sphereGeometry args={[0.45, 32, 32]} />
         <meshStandardMaterial
-          color="#FFB6D5"
-          emissive="#F45B9A"
-          emissiveIntensity={isUnlocked ? 1.8 : 0.4}
-          roughness={0.1}
-          metalness={0.4}
+          color="#FFB9D5"
+          emissive="#F47FAF"
+          emissiveIntensity={isUnlocked ? 2.2 : 0.4}
+          roughness={0.08}
+          metalness={0.3}
         />
       </mesh>
 
@@ -113,15 +113,15 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
       <pointLight
         ref={interiorLightRef}
         position={[0, 0, 0.1]}
-        color="#FFD98E"
+        color="#F4D49A"
         distance={6}
         intensity={0.2}
       />
       <pointLight
         position={[0, 0.5, 0.2]}
-        color="#F45B9A"
+        color="#F47FAF"
         distance={5}
-        intensity={isUnlocked ? 2.5 : 0.1}
+        intensity={isUnlocked ? 3.0 : 0.1}
       />
 
       {/* Safe Door (Hinged on the left side: x = -1.5) */}
@@ -131,9 +131,9 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
           <mesh castShadow receiveShadow>
             <boxGeometry args={[2.9, 2.5, 0.18]} />
             <meshStandardMaterial
-              color="#0E223D"
-              roughness={0.2}
-              metalness={0.88}
+              color="#0D1E38"
+              roughness={0.18}
+              metalness={0.92}
             />
           </mesh>
 
@@ -141,9 +141,9 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
           <mesh position={[0, 0, 0.1]}>
             <boxGeometry args={[2.7, 2.3, 0.04]} />
             <meshStandardMaterial
-              color="#F45B9A"
-              roughness={0.3}
-              metalness={0.7}
+              color="#F47FAF"
+              roughness={0.25}
+              metalness={0.8}
             />
           </mesh>
 
@@ -152,8 +152,8 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
             <boxGeometry args={[2.2, 0.95, 0.05]} />
             <meshStandardMaterial
               color="#040B16"
-              roughness={0.3}
-              metalness={0.9}
+              roughness={0.25}
+              metalness={0.92}
             />
           </mesh>
 
@@ -170,17 +170,17 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
                 onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
                 onPointerOut={() => { document.body.style.cursor = 'default'; }}
               >
-                <cylinderGeometry args={[0.3, 0.3, 0.35, 20]} />
+                <cylinderGeometry args={[0.3, 0.3, 0.35, 24]} />
                 <meshStandardMaterial
-                  color="#FFD98E"
+                  color="#F4D49A"
                   roughness={0.15}
-                  metalness={0.95}
+                  metalness={0.92}
                 />
               </mesh>
               {/* Dial bezel ring */}
               <mesh position={[0, 0, -0.02]}>
-                <ringGeometry args={[0.32, 0.36, 24]} />
-                <meshBasicMaterial color="#F45B9A" />
+                <ringGeometry args={[0.32, 0.36, 28]} />
+                <meshBasicMaterial color="#F47FAF" />
               </mesh>
             </group>
           ))}
@@ -189,7 +189,7 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
           <group position={[0, -0.65, 0.13]}>
             <mesh>
               <circleGeometry args={[0.22, 32]} />
-              <meshStandardMaterial color="#FFD98E" roughness={0.1} metalness={0.9} />
+              <meshStandardMaterial color="#F4D49A" roughness={0.12} metalness={0.92} />
             </mesh>
             <mesh position={[0, 0.04, 0.01]}>
               <circleGeometry args={[0.07, 16]} />
@@ -200,18 +200,18 @@ export const CombinationLock3D: React.FC<CombinationLock3DProps> = ({
               <meshBasicMaterial color="#040B16" />
             </mesh>
             {/* Glowing Keyhole Aura */}
-            <pointLight position={[0, 0, 0.1]} color="#FFD98E" distance={0.8} intensity={1.2} />
+            <pointLight position={[0, 0, 0.1]} color="#F4D49A" distance={0.8} intensity={1.2} />
           </group>
 
           {/* Vault Wheel Handle on the Right */}
           <group position={[0.9, -0.65, 0.18]}>
             <mesh rotation={[0, 0, 0]}>
               <torusGeometry args={[0.18, 0.035, 12, 24]} />
-              <meshStandardMaterial color="#FFD98E" roughness={0.15} metalness={0.9} />
+              <meshStandardMaterial color="#F4D49A" roughness={0.15} metalness={0.92} />
             </mesh>
             <mesh>
               <sphereGeometry args={[0.06, 12, 12]} />
-              <meshStandardMaterial color="#FFB6D5" roughness={0.2} metalness={0.8} />
+              <meshStandardMaterial color="#FFB9D5" roughness={0.2} metalness={0.8} />
             </mesh>
           </group>
         </group>

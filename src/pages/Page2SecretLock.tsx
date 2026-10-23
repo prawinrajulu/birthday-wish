@@ -73,10 +73,10 @@ export const Page2SecretLock: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col justify-between items-center px-4 py-8 overflow-hidden">
+    <div className="relative w-full min-h-screen flex flex-col justify-between items-center px-6 sm:px-12 py-8 overflow-hidden">
       {/* 3D Scene of Vault / Safe */}
       <div className="absolute inset-0 w-full h-full">
-        <CanvasContainer cameraPosition={[0, 0, 5]} fov={38}>
+        <CanvasContainer cameraPosition={[0, 0, 5]} fov={36}>
           <CombinationLock3D
             digits={digits}
             isUnlocked={isUnlocked}
@@ -86,49 +86,54 @@ export const Page2SecretLock: React.FC = () => {
         </CanvasContainer>
       </div>
 
-      {/* Top Header Card */}
-      <motion.div
+      {/* Top Editorial Header */}
+      <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-20 text-center max-w-md mt-4"
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-20 w-full max-w-4xl text-center mt-2"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs text-softgold mb-2 border border-softgold/30 shadow-glow-gold">
-          <KeyRound className="w-3.5 h-3.5" />
-          <span>VAULT SECURITY</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-champagne/25 text-[11px] text-champagne tracking-[0.2em] uppercase font-sans mb-3 backdrop-blur-md">
+          <KeyRound className="w-3.5 h-3.5 text-champagne" />
+          <span>VAULT ARCHIVE • CHAPTER 02</span>
         </div>
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-dreamwhite">
-          Some memories are too precious to leave unlocked.
+        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-dreamwhite tracking-tight leading-tight">
+          Some memories are too precious <span className="italic text-shimmer">to leave unlocked.</span>
         </h2>
-      </motion.div>
+        <p className="text-xs sm:text-sm text-blush/80 mt-2 font-sans font-light">
+          Enter the secret 4-digit code to reveal our memory vault.
+        </p>
+      </motion.header>
 
-      {/* Bottom Interactive Lock Controls & Clue Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
+      {/* Bottom Interactive Lock Controls & Tactile Wheels */}
+      <motion.main
+        initial={{ opacity: 0, y: 35 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="relative z-20 w-full max-w-md mb-16 flex flex-col items-center"
+        transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-20 w-full max-w-md mb-12 sm:mb-16 flex flex-col items-center px-2"
       >
-        {/* Interactive Number Dial Wheels */}
-        <div className="glass-panel p-5 sm:p-6 rounded-3xl border border-blush/30 shadow-glow-blue w-full backdrop-blur-xl mb-3">
-          <div className="flex justify-center items-center gap-2 sm:gap-3 mb-4">
+        {/* Sleek Minimal Glass Control Bar */}
+        <div className="w-full p-6 sm:p-7 rounded-3xl glass-editorial border border-white/10 shadow-[0_20px_50px_-10px_rgba(4,11,22,0.7)] backdrop-blur-2xl mb-4">
+          {/* Dial Wheels */}
+          <div className="flex justify-center items-center gap-3 sm:gap-4 mb-6">
             {digits.map((digit, idx) => (
               <div key={idx} className="flex flex-col items-center">
                 <button
                   onClick={() => incrementDigit(idx)}
                   disabled={isUnlocked}
                   aria-label={`Increase digit ${idx + 1}`}
-                  className="p-1 rounded-md text-dreamwhite/50 hover:text-softgold hover:bg-white/5 active:scale-90 transition-all"
+                  className="p-1.5 text-dreamwhite/40 hover:text-champagne active:scale-90 transition-all disabled:opacity-20"
                 >
-                  <ChevronUp className="w-5 h-5" />
+                  <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
 
-                {/* Dial Display Box */}
+                {/* Tactile Dial Display Box */}
                 <div
                   onClick={() => incrementDigit(idx)}
-                  className={`w-12 h-16 sm:w-14 sm:h-18 flex items-center justify-center rounded-2xl border text-2xl sm:text-3xl font-serif font-bold cursor-pointer select-none transition-all shadow-inner ${
+                  className={`w-12 h-16 sm:w-16 sm:h-20 flex items-center justify-center rounded-2xl border text-2xl sm:text-3xl font-serif font-semibold cursor-pointer select-none transition-all duration-300 shadow-inner ${
                     isUnlocked
-                      ? 'bg-rosepink/30 border-softgold text-softgold shadow-glow-gold'
-                      : 'bg-midnight-deep/80 border-blush/30 text-dreamwhite hover:border-softgold/60'
+                      ? 'bg-rosepink/20 border-champagne text-champagne shadow-[0_0_25px_rgba(244,212,154,0.4)]'
+                      : 'bg-ocean-deep/90 border-blush/20 text-dreamwhite hover:border-champagne/60 hover:scale-[1.02]'
                   }`}
                 >
                   <span>{digit}</span>
@@ -138,9 +143,9 @@ export const Page2SecretLock: React.FC = () => {
                   onClick={() => decrementDigit(idx)}
                   disabled={isUnlocked}
                   aria-label={`Decrease digit ${idx + 1}`}
-                  className="p-1 rounded-md text-dreamwhite/50 hover:text-softgold hover:bg-white/5 active:scale-90 transition-all"
+                  className="p-1.5 text-dreamwhite/40 hover:text-champagne active:scale-90 transition-all disabled:opacity-20"
                 >
-                  <ChevronDown className="w-5 h-5" />
+                  <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             ))}
@@ -150,22 +155,22 @@ export const Page2SecretLock: React.FC = () => {
           <button
             onClick={handleUnlockAttempt}
             disabled={isUnlocked}
-            aria-label="Unlock our memories"
-            className={`w-full py-3.5 px-6 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+            aria-label="Unlock memories"
+            className={`w-full py-4 px-6 rounded-full font-sans font-semibold text-xs sm:text-sm tracking-[0.16em] uppercase flex items-center justify-center gap-2.5 transition-all duration-300 shadow-md ${
               isUnlocked
-                ? 'bg-gradient-to-r from-softgold to-blush text-midnight font-bold'
-                : 'bg-gradient-to-r from-rosepink via-rosepink-hover to-royal text-dreamwhite shadow-glow-pink hover:scale-[1.02] active:scale-[0.98]'
+                ? 'bg-gradient-to-r from-champagne to-blush text-midnight font-bold shadow-[0_0_30px_rgba(244,212,154,0.5)]'
+                : 'bg-gradient-to-r from-rosepink via-rosepink-hover to-ocean-light text-dreamwhite border border-blush/30 shadow-[0_0_25px_rgba(244,127,175,0.4)] hover:shadow-[0_0_35px_rgba(244,212,154,0.45)] hover:scale-[1.02] active:scale-[0.98]'
             }`}
           >
             {isUnlocked ? (
               <>
                 <Unlock className="w-4 h-4 text-midnight animate-bounce" />
-                <span>MEMORIES UNLOCKED! ✨</span>
+                <span>VAULT UNLOCKED • OPENING</span>
               </>
             ) : (
               <>
-                <Lock className="w-4 h-4 text-softgold" />
-                <span>UNLOCK OUR MEMORIES</span>
+                <Lock className="w-4 h-4 text-champagne" />
+                <span>UNLOCK MEMORIES</span>
               </>
             )}
           </button>
@@ -177,7 +182,7 @@ export const Page2SecretLock: React.FC = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="text-xs sm:text-sm text-blush font-medium text-center mt-3"
+                className="text-xs text-rosepink font-sans font-medium text-center mt-3"
               >
                 {errorMessage}
               </motion.p>
@@ -185,42 +190,42 @@ export const Page2SecretLock: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* Floating Clue Button & Clue Card */}
+        {/* Refined Secret Clue Button & Card */}
         <div className="w-full flex flex-col items-center">
           <button
             onClick={() => {
               soundEngine.playSparkle();
               setShowClue(!showClue);
             }}
-            className="inline-flex items-center gap-1.5 text-xs text-softgold/90 hover:text-softgold bg-midnight-light/60 px-3.5 py-1.5 rounded-full border border-softgold/20 transition-all hover:border-softgold/50"
+            className="inline-flex items-center gap-2 text-xs text-champagne/80 hover:text-champagne font-sans font-light tracking-wider px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 transition-all hover:border-champagne/40"
           >
-            <HelpCircle className="w-3.5 h-3.5 text-softgold" />
+            <HelpCircle className="w-3.5 h-3.5 text-champagne" />
             <span>{showClue ? "Hide Secret Clue" : "Need a Clue?"}</span>
           </button>
 
           <AnimatePresence>
             {showClue && (
               <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                initial={{ opacity: 0, y: 10, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="mt-2 p-3.5 rounded-2xl glass-panel-light border border-softgold/40 text-center max-w-sm"
+                exit={{ opacity: 0, y: 10, scale: 0.96 }}
+                className="mt-3 p-4 rounded-2xl glass-editorial border border-champagne/30 text-center max-w-sm backdrop-blur-xl"
               >
-                <div className="flex items-center justify-center gap-1 text-softgold text-xs font-semibold uppercase tracking-wider mb-1">
+                <div className="flex items-center justify-center gap-1.5 text-champagne text-[11px] font-sans font-medium uppercase tracking-[0.15em] mb-1.5">
                   <Sparkles className="w-3 h-3" />
                   <span>Whispered Clue</span>
                 </div>
-                <p className="font-serif italic text-sm text-dreamwhite/95">
+                <p className="font-serif italic text-sm sm:text-base text-dreamwhite/95 leading-relaxed">
                   "{birthdayConfig.security.clue}"
                 </p>
-                <p className="text-[11px] text-blush/80 mt-1">
+                <p className="text-[11px] text-blush/80 mt-1.5 font-sans font-light">
                   {birthdayConfig.security.hint}
                 </p>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-      </motion.div>
+      </motion.main>
     </div>
   );
 };
